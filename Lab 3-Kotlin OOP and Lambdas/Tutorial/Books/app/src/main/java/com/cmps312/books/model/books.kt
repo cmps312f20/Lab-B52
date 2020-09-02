@@ -20,10 +20,9 @@ class PaperBook(
 
     override fun toString(): String {
         return """
-            
-            ${super.toString()}
-            Publisher   :$publisher
-            Isbn : $isbn
+                ${super.toString()}
+    Publisher   :$publisher
+    Isbn : $isbn
         """.trimIndent()
     }
 }
@@ -87,6 +86,13 @@ fun main() {
     books.add(paperBook2)
 
     //display them using the foreach
+    books.forEach(::println)  // little bit advance
+
+    books.forEach {println(it)}
+
+    books.forEach { book-> println(book)  }
+
+
 
 
 }
