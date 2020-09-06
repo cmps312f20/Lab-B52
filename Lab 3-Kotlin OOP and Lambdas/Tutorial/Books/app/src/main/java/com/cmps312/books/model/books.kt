@@ -1,97 +1,79 @@
 package com.cmps312.books.model
 
-open class Book(var name: String, var author: String, var yearOfPublication: Int) {
+open class Book(val name : String, val author : String, val yearOfPublication : Int ){
     override fun toString(): String {
         return """
-            
-            Name   : $name
+
+            Name : $name
             Author : $author
-            Year   : $yearOfPublication
+            Year : $yearOfPublication
         """.trimIndent()
     }
 }
 
-class PaperBook(
-    name: String,
-    author: String,
-    yearOfPublication: Int,
-    var publisher: String,
-    var isbn: String) : Book(name, author, yearOfPublication) {
-
+class AudioBook( name : String,
+                 author : String,
+                 yearOfPublication : Int,
+                 var size : Int,
+                 var length : Int,
+                 var artistName : String) : Book(name , author , yearOfPublication){
     override fun toString(): String {
         return """
-                ${super.toString()}
-    Publisher   :$publisher
-    Isbn : $isbn
+        ${super.toString()}
+        Size : $size
+        Length : $size
+        Artist : $size
         """.trimIndent()
     }
 }
-
-class AudioBook(
-    name: String,
-    author: String,
-    yearOfPublication: Int,
-    var size: Int,
-    var length: Int,
-    var artistName: String) : Book(name, author, yearOfPublication) {
-
+class PaperBook( name : String,
+                 author : String,
+                 yearOfPublication : Int,
+                 var publisher : String,
+                 var isbn : String) : Book(name , author , yearOfPublication){
     override fun toString(): String {
         return """
-            
-            ${super.toString()}
-            Size   :$size
-            Length : $length
-            Artist : $artistName
+        ${super.toString()}
+        Publisher : $publisher
+        ISBN : $isbn
         """.trimIndent()
     }
 }
 
-
-fun main() {
-
-    var book = Book("The Seven Habits of Effective People", "Stephens", 1989)
-
+fun main(args: Array<String>) {
     var audioBook1 = AudioBook(
-        "The Seven Habits of Effective People V1",
-        "Stephens",
-        1989,
-        1222,
-        100,
-        "Ali")
+        "How to be successful" ,
+        "Hassan Alsamra" ,
+        222,
+        121,
+        12,
+        "Ahmed Ayman")
     var audioBook2 = AudioBook(
-        "The Seven Habits of Effective People V2",
-        "Stephens",
-        1990,
-        1222,
-        100,
-        "Ali")
+        "How to be successful" ,
+        "Hassan Alsamra" ,
+        2225,
+        122,
+        133,
+        "Ahmed Omar")
 
     var paperBook1 = PaperBook(
-        "The Seven Habits of Effective People V3",
-        "Stephens",
-        1992,
+        "How to be successful" ,
+        "Hassan Abdi" ,
+        2025,
         "Amazon",
-        "100002",
-        )
+        "10004")
+
     var paperBook2 = PaperBook(
-        "The Seven Habits of Effective People V2",
-        "Stephens",
-        1995,
+        "How to be successful" ,
+        "Hassan Alsamra" ,
+        2025,
         "Oriely",
-        "100001")
+        "1001")
 
-    //collections
-    var books = arrayListOf<Book>(audioBook1, audioBook2)
-    books.add(paperBook1)
-    books.add(paperBook2)
+    var books = mutableListOf(audioBook1 , paperBook1 , paperBook2)
+    books.add(audioBook2)
 
-    //display them using the foreach
-    books.forEach(::println)  // little bit advance
-
-    books.forEach {println(it)}
-
-    books.forEach { book-> println(book)  }
-
+    books.forEach{ println(it)}
 
 
 
