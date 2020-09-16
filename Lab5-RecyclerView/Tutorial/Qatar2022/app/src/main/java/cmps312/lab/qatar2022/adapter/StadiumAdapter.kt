@@ -7,6 +7,7 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import cmps312.lab.qatar2022.model.Stadium
 import com.example.qatar2022.R
+
 import kotlinx.android.synthetic.main.list_item_stadium.view.*
 
 //Step 2 -> IMPLEMENT/EXTEND THE ADAPTER
@@ -35,7 +36,6 @@ class StadiumAdapter(val stadiums : List<Stadium>, val context : Context) :
        //inflate the view
         val itemView = LayoutInflater.from(context)
             .inflate(R.layout.list_item_stadium, parent , false)
-
         return StadiumViewHolder(itemView)
 
     }
