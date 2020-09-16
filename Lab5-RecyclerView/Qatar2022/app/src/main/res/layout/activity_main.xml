@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    app:cardElevation="10dp">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintBottom_toTopOf="@+id/statusTv"
+        app:layout_constraintTop_toTopOf="@+id/statusTv">
+
+        <include
+            android:id="@+id/include"
+            layout="@layout/list_item_stadium"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="4dp"
+            app:layout_constraintBottom_toTopOf="@+id/prevBtn"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent" />
+
+        <Button
+            android:id="@+id/prevBtn"
+            android:layout_width="wrap_content"
+            android:layout_height="42dp"
+            android:layout_marginStart="16dp"
+            android:layout_marginLeft="16dp"
+            android:drawableLeft="@drawable/ic_navigate_previous"
+            android:text="Prev"
+            android:textSize="12sp"
+            app:layout_constraintStart_toStartOf="parent"
+            tools:layout_editor_absoluteY="335dp" />
+
+        <Button
+            android:id="@+id/nextBtn"
+            android:layout_width="wrap_content"
+            android:layout_height="41dp"
+            android:text="Next"
+            android:textSize="12sp"
+            tools:layout_editor_absoluteX="288dp"
+            tools:layout_editor_absoluteY="484dp"
+            android:drawableRight="@drawable/ic_navigate_next" />
+
+        <androidx.constraintlayout.helper.widget.Flow
+            android:id="@+id/flow"
+            android:layout_width="360dp"
+            android:layout_height="0dp"
+            android:layout_marginTop="4dp"
+            app:constraint_referenced_ids="prevBtn,currentIndexTv,nextBtn"
+            app:flow_horizontalStyle="spread_inside"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/include" />
+
+        <TextView
+            android:id="@+id/currentIndexTv"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="1 of 8"
+            tools:layout_editor_absoluteX="178dp"
+            tools:layout_editor_absoluteY="314dp" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</androidx.cardview.widget.CardView>
