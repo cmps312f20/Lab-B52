@@ -1,7 +1,10 @@
 package cmps312.lab.bankingapp.model
 
+import android.os.Parcelable
+import kotlinx.android.parcel.Parcelize
 
-class Transaction()  {
+@Parcelize
+class Transaction() : Parcelable {
     var senderName: String? = null
     var senderAccountNo: String? = null
     var receiverName: String? = null

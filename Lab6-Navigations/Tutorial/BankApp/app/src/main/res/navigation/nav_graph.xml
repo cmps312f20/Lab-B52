@@ -41,6 +41,9 @@
         <action
             android:id="@+id/action_transferInfoFragment_to_transferConfirmationFragment"
             app:destination="@id/transferConfirmationFragment" />
+        <argument
+            android:name="transaction"
+            app:argType="cmps312.lab.bankingapp.model.Transaction" />
     </fragment>
     <fragment
         android:id="@+id/transferConfirmationFragment"
@@ -50,5 +53,8 @@
         <action
             android:id="@+id/action_transferConfirmationFragment_to_transactionListFragment"
             app:destination="@id/transactionListFragment" />
+        <argument
+            android:name="transaction"
+            app:argType="cmps312.lab.bankingapp.model.Transaction" />
     </fragment>
 </navigation>
