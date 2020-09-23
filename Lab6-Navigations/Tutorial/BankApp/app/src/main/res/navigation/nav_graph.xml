@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/nav_graph"
+    app:startDestination="@id/senderInfoFragment">
+
+    <fragment
+        android:id="@+id/transactionListFragment"
+        android:name="cmps312.lab.bankingapp.TransactionListFragment"
+        android:label="fragment_transaction_list2"
+        tools:layout="@layout/fragment_transaction_list2" >
+        <action
+            android:id="@+id/action_transactionListFragment_to_transactionDetailsFragment"
+            app:destination="@id/transactionDetailsFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/transactionDetailsFragment"
+        android:name="cmps312.lab.bankingapp.TransactionDetailsFragment"
+        android:label="fragment_transaction_details2"
+        tools:layout="@layout/fragment_transaction_details2" />
+    <fragment
+        android:id="@+id/accountBalanceFragment"
+        android:name="cmps312.lab.bankingapp.AccountBalanceFragment"
+        android:label="fragment_account_balance"
+        tools:layout="@layout/fragment_account_balance" />
+    <fragment
+        android:id="@+id/senderInfoFragment"
+        android:name="cmps312.lab.bankingapp.SenderInfoFragment"
+        android:label="fragment_sender_info"
+        tools:layout="@layout/fragment_sender_info" >
+        <action
+            android:id="@+id/action_senderInfoFragment_to_transferInfoFragment"
+            app:destination="@id/transferInfoFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/transferInfoFragment"
+        android:name="cmps312.lab.bankingapp.TransferInfoFragment"
+        android:label="fragment_transfer_info"
+        tools:layout="@layout/fragment_transfer_info" >
+        <action
+            android:id="@+id/action_transferInfoFragment_to_transferConfirmationFragment"
+            app:destination="@id/transferConfirmationFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/transferConfirmationFragment"
+        android:name="cmps312.lab.bankingapp.TransferConfirmationFragment"
+        android:label="fragment_transfer_confirmation"
+        tools:layout="@layout/fragment_transfer_confirmation" >
+        <action
+            android:id="@+id/action_transferConfirmationFragment_to_transactionListFragment"
+            app:destination="@id/transactionListFragment" />
+    </fragment>
+</navigation>
