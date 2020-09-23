@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <group >
+        <item
+            android:id="@+id/transactionListFragment"
+            android:icon="@drawable/ic_baseline_monetization_on_24"
+            android:title="View Transaction" />
+        <item
+            android:id="@+id/senderInfoFragment"
+            android:icon="@drawable/ic_baseline_transfer_within_a_station_24"
+            android:title="Send Money" />
+        <item
+            android:id="@+id/accountBalanceFragment"
+            android:icon="@drawable/ic_baseline_account_balance_wallet_24"
+            android:title="Check Balance" />
+    </group>
+</menu>
