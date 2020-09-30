@@ -24,7 +24,7 @@ class SelectBeneficiaryFragment : Fragment(R.layout.fragment_select_beneficiary)
 
     private fun updateBeneficiaryAndNavigateToConfirmation(beneficiary: Beneficiary) {
 
-        val action = SelectBeneficiaryFragmentDirections.toTransferConfirmation()
+        val action = R.id.toTransferConfirmation
         findNavController().navigate(action)
     }
 

@@ -12,7 +12,8 @@ class TransferConfirmationFragment : Fragment(R.layout.fragment_transfer_confirm
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        var action = TransferConfirmationFragmentDirections.toHome()
+
+        var action = R.id.toHome
 
         confirmationBtn.setOnClickListener {
         //  todo call the addTransfer()

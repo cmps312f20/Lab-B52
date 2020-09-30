@@ -18,7 +18,7 @@ class TransferFragment : Fragment(R.layout.fragment_transfer) {
 //        )
 
         nextBtn.setOnClickListener {
-            val action = TransferFragmentDirections.toSelectBeneficiary()
+            val action = R.id.toSelectBeneficiary
             findNavController().navigate(action)
         }
     }
