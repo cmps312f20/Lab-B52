@@ -31,6 +31,8 @@ class TransferListFragment : Fragment(R.layout.fragment_transfer_list) {
     }
 
     private fun showDetails(transfer: Transfer) {
+        transferViewModel.selectedTransfer = transfer
+
         var action = R.id.toTransactionDetails
         findNavController().navigate(action)
     }

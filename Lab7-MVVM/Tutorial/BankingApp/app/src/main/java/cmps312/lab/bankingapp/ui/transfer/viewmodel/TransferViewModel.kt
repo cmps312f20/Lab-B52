@@ -9,6 +9,7 @@ import cmps312.lab.bankingapp.reposiotry.BankRepository
 
 class TransferViewModel(context: Application) : AndroidViewModel(context) {
     private var _transfers = MutableLiveData<MutableList<Transfer>>() //null
+    lateinit var selectedTransfer : Transfer //null
 
     init {
         BankRepository.initTransfers(context)
