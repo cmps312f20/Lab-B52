@@ -4,6 +4,7 @@ import android.content.Context
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
 import androidx.databinding.DataBindingUtil
 import androidx.recyclerview.widget.RecyclerView
 import cmps312.lab.bankingapp.R
@@ -25,6 +26,8 @@ class TransferListAdapter(private val context: Context, private val listener: (T
         RecyclerView.ViewHolder(binding.root) {
         fun bind(transfer: Transfer) {  //data binding
             binding.transfer = transfer
+
+            binding.root.setOnClickListener { listener(transfer) }
         }
     }
 
@@ -36,7 +39,6 @@ class TransferListAdapter(private val context: Context, private val listener: (T
                 parent,
                 false
             )
-
         return TransactionViewHolder(binding)
     }
 
