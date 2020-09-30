@@ -24,7 +24,6 @@ class TransferListFragment : Fragment(R.layout.fragment_transfer_list) {
             transferAdapter.updateList(it)
         }
 
-
         transactionRV.apply {
             layoutManager = LinearLayoutManager(view.context)
             adapter = transferAdapter

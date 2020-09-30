@@ -29,9 +29,10 @@ class MainActivity : AppCompatActivity() {
         appBarConfiguration = AppBarConfiguration(navController.graph, drawerlayout)
         setupActionBarWithNavController(navController, appBarConfiguration)
 
-
         navController.addOnDestinationChangedListener(::onDestinationChanged)// Remove the left caret
         supportActionBar?.setDisplayShowHomeEnabled(false);
+
+
     }
 
     //override fun onSupportNavigateUp() = navController.navigateUp()

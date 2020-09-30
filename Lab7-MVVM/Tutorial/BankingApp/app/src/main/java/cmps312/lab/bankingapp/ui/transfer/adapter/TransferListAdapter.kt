@@ -4,8 +4,10 @@ import android.content.Context
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.databinding.DataBindingUtil
 import androidx.recyclerview.widget.RecyclerView
 import cmps312.lab.bankingapp.R
+import cmps312.lab.bankingapp.databinding.ListItemTransferBinding
 import cmps312.lab.bankingapp.model.Transfer
 import kotlinx.android.synthetic.main.list_item_beneficiary.view.*
 import kotlinx.android.synthetic.main.list_item_transfer.view.*
@@ -19,18 +21,23 @@ class TransferListAdapter(private val context: Context, private val listener: (T
     init {
         transfers = listOf<Transfer>()
     }
-    inner class TransactionViewHolder(val itemView: View) :
-        RecyclerView.ViewHolder(itemView) {
+    inner class TransactionViewHolder(val binding: ListItemTransferBinding) :
+        RecyclerView.ViewHolder(binding.root) {
         fun bind(transfer: Transfer) {  //data binding
-           itemView.accountNoTv.text = transfer.beneficiaryAccountNo
-           itemView.amountTv.text = transfer.amount.toString()
-           itemView.beneficiaryNameTv.text = transfer.beneficiaryName
+            binding.transfer = transfer
         }
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): TransactionViewHolder {
-        val view = LayoutInflater.from(context).inflate(R.layout.list_item_transfer, parent, false)
-        return TransactionViewHolder(view)
+        val binding: ListItemTransferBinding = DataBindingUtil
+            .inflate(
+                LayoutInflater.from(context),
+                R.layout.list_item_transfer,
+                parent,
+                false
+            )
+
+        return TransactionViewHolder(binding)
     }
 
     override fun onBindViewHolder(holder: TransactionViewHolder, position: Int) = holder.bind(transfers[position])
