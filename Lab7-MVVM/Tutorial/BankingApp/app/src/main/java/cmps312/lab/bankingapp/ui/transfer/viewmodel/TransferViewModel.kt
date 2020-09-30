@@ -12,7 +12,7 @@ class TransferViewModel(context: Application) : AndroidViewModel(context) {
     private var _transfers = MutableLiveData<MutableList<Transfer>>() //null
     lateinit var selectedTransfer : Transfer //null
     lateinit var accounts : List<Account>
-    lateinit var transfer: Transfer
+    lateinit var newTransfer: Transfer
 
     init {
         BankRepository.initTransfers(context)
@@ -23,4 +23,9 @@ class TransferViewModel(context: Application) : AndroidViewModel(context) {
     }
 
     fun transfers():LiveData<MutableList<Transfer>> = _transfers
+    
+    fun addTransfer(){
+        _transfers.value?.add(newTransfer)
+        _transfers.postValue(_transfers.value)
+    }
 }

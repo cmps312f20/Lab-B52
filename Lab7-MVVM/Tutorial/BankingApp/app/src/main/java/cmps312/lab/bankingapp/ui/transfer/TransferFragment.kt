@@ -21,7 +21,7 @@ class TransferFragment : Fragment(R.layout.fragment_transfer) {
 
         //initialize the transfer
 
-        transferViewModel.transfer = Transfer();
+        transferViewModel.newTransfer = Transfer();
 
         fromAccountNoSP.adapter = ArrayAdapter<Account>(
             view.context,
@@ -30,8 +30,8 @@ class TransferFragment : Fragment(R.layout.fragment_transfer) {
         )
 
         nextBtn.setOnClickListener {
-            transferViewModel.transfer.fromAccountNo = fromAccountNoSP.selectedItem.toString()
-            transferViewModel.transfer.amount = amountEt.text.toString().toDouble()
+            transferViewModel.newTransfer.fromAccountNo = fromAccountNoSP.selectedItem.toString()
+            transferViewModel.newTransfer.amount = amountEt.text.toString().toDouble()
 
             val action = R.id.toSelectBeneficiary
             findNavController().navigate(action)

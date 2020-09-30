@@ -7,6 +7,7 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import cmps312.lab.bankingapp.R
 import cmps312.lab.bankingapp.model.Beneficiary
+import kotlinx.android.synthetic.main.list_item_beneficiary.view.*
 
 class BeneficiaryAdapter(
     private val context: Context,
@@ -22,7 +23,10 @@ class BeneficiaryAdapter(
         RecyclerView.ViewHolder(itemView) {
 
         fun bind(beneficiary: Beneficiary) {
-            //todo write the binding
+            itemView.beneficiaryNameTv.text = beneficiary.name
+            itemView.beneficiaryAccountNoTv.text = beneficiary.accountNo
+
+            itemView.setOnClickListener { listener(beneficiary) }
         }
     }
 
