@@ -5,7 +5,9 @@
     <string name="view_transfers">View Transfers</string>
     <string name="send_money">Send Money</string>
     <string name="check_balance">Check Balance</string>
-    <string name="click_anywhere"><u>Click Here To Confirm</u></string>
+    <string name="trnasaction_detail"><u>Click Here To Confirm</u></string>
     <string name="account_no">Account No</string>
     <string name="todo">TODO</string>
+    <string name="fund_transfer">Fund Transfer</string>
+
 </resources>

@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">BankingApp</string>
+    <string name="hello_blank_fragment">مرحبًا</string>
+    <string name="view_transfers">مشاهدة التحويلات</string>
+    <string name="send_money">إرسال الأموال</string>
+    <string name="check_balance">تحقق من الرصيد</string>
+</resources>
