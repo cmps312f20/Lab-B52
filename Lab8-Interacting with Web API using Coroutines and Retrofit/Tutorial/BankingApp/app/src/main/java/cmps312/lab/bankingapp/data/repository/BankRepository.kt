@@ -9,6 +9,7 @@ import retrofit2.Retrofit
 object BankRepository {
     //the user logs in and we know his/her customer info/customer id
     val customerID = 10001
+
     private val contentType = "application/json".toMediaType()
     private val BASE_URL = "https://cmps312banking.herokuapp.com/api/"
 
