@@ -8,7 +8,8 @@ import cmps312.lab.beneficiaryapp_review.R
 import cmps312.lab.beneficiaryapp_review.databinding.BeneficiaryListItemBinding
 import cmps312.lab.beneficiaryapp_review.model.Beneficiary
 
-class BeneficiaryAdapter(val deleteBeneficiary: (Beneficiary) ->Unit) : RecyclerView.Adapter<BeneficiaryAdapter.BeneficiaryViewHolder>() {
+class BeneficiaryAdapter(val deleteBeneficiary: (Beneficiary) -> Unit) :
+    RecyclerView.Adapter<BeneficiaryAdapter.BeneficiaryViewHolder>() {
     var beneficiaries = listOf<Beneficiary>()
         set(value) {
             field = value

@@ -14,7 +14,7 @@ import kotlinx.android.synthetic.main.fragment_beneficiary_list.*
 
 class BeneficiaryListFragment : Fragment(R.layout.fragment_beneficiary_list) {
 
-    val beneficiaryViewModel : BeneficiaryViewModel by activityViewModels()
+    val beneficiaryViewModel: BeneficiaryViewModel by activityViewModels()
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
@@ -26,13 +26,14 @@ class BeneficiaryListFragment : Fragment(R.layout.fragment_beneficiary_list) {
             layoutManager = LinearLayoutManager(context)
         }
 
-        beneficiaryViewModel.beneficiaries.observe(viewLifecycleOwner){
+        beneficiaryViewModel.beneficiaries.observe(viewLifecycleOwner) {
             beneficiaryAdapter.beneficiaries = it
         }
 
         addBtn.setOnClickListener { findNavController().navigate(R.id.toAddBeneficiaryFragment) }
     }
 
-    fun deleteBeneficiary(beneficiary: Beneficiary) = beneficiaryViewModel.deleteBeneficiary(beneficiary)
+    fun deleteBeneficiary(beneficiary: Beneficiary) =
+        beneficiaryViewModel.deleteBeneficiary(beneficiary)
 
 }

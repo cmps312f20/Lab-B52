@@ -10,7 +10,7 @@ import cmps312.lab.beneficiaryapp_review.ui.viewmodel.BeneficiaryViewModel
 import kotlinx.android.synthetic.main.fragment_add_beneficiary.*
 
 class AddBeneficiaryFragment : Fragment(R.layout.fragment_add_beneficiary) {
-    val beneficiaryViewModel : BeneficiaryViewModel by activityViewModels()
+    val beneficiaryViewModel: BeneficiaryViewModel by activityViewModels()
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)

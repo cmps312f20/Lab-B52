@@ -9,7 +9,7 @@
         android:id="@+id/beneficiaryListFragment"
         android:name="cmps312.lab.beneficiaryapp_review.ui.BeneficiaryListFragment"
         android:label="Fragment Beneficiary List"
-        tools:layout="@layout/fragment_beneficiary_list" >
+        tools:layout="@layout/fragment_beneficiary_list">
         <action
             android:id="@+id/toBeneficiaryDetailsFragment"
             app:destination="@id/beneficiaryDetailsFragment" />
