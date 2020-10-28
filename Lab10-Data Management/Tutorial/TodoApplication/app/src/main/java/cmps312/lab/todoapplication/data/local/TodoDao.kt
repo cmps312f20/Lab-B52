@@ -7,7 +7,6 @@ import cmps312.lab.todoapplication.data.local.entity.Todo
 
 @Dao
 interface TodoDao {
-
     @Query("SELECT * FROM Project")
     fun getProjects() : LiveData<List<Project>>
 

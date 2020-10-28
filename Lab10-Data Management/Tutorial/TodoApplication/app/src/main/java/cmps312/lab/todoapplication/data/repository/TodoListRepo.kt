@@ -12,41 +12,16 @@ class TodoListRepo(private val context: Context) {
         TodoDatabase.getDatabase(context).todoDao()
     }
 
-    fun getProjects(): LiveData<List<Project>> {
-        TODO("Not yet implemented")
-    }
-
-    suspend fun addProject(project: Project): Long {
-        TODO("Not yet implemented")
-    }
-
-    suspend fun updateProject(project: Project) {
-        TODO("Not yet implemented")
-    }
-
-    suspend fun deleteProject(project: Project) {
-        TODO("Not yet implemented")
-    }
-
-    fun getTodoListByProjectId(pid: Int): LiveData<List<Todo>> {
-        TODO("Not yet implemented")
-    }
-
-    fun getTodo(id: Int): Todo {
-        TODO("Not yet implemented")
-    }
-
-    suspend fun addTodo(todo: Todo): Long {
-        TODO("Not yet implemented")
-    }
-
-    suspend fun updateTodo(todo: Todo) {
-        TODO("Not yet implemented")
-    }
-
-    suspend fun deleteTodo(todo: Todo) {
-        TODO("Not yet implemented")
-    }
+    fun getProjects(): LiveData<List<Project>> = todoDao.getProjects()
+    suspend fun addProject(project: Project): Long = todoDao.addProject(project)
+    suspend fun updateProject(project: Project) = todoDao.updateProject(project)
+    suspend fun deleteProject(project: Project) = todoDao.deleteProject(project)
+    fun getTodoListByProjectId(pid: Int): LiveData<List<Todo>> = todoDao.getTodoListByProjectId(pid)
+    fun getTodo(id: Int): Todo = todoDao.getTodo(id)
+    suspend fun addTodo(todo: Todo): Long = todoDao.addTodo(todo)
+    suspend fun updateTodo(todo: Todo) = todoDao.updateTodo(todo)
+    suspend fun deleteTodo(todo: Todo) = todoDao.deleteTodo(todo)
+}
 
 
 }
