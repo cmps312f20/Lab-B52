@@ -21,7 +21,7 @@ class ProjectViewModel(application: Application) : AndroidViewModel(application)
     lateinit var selectedProject : Project
 
     fun getTodos(project: Project){
-        todos = todoListRepo.getTodoListByProject(project.id)
+        todos = todoListRepo.getTodoListByProjectId(project.id)
         Log.d("TAG", "getTodos: $project.id $project.name")
     }
     fun addTodo(todo: Todo) {
@@ -38,7 +38,7 @@ class ProjectViewModel(application: Application) : AndroidViewModel(application)
 
     fun updateTodo(todo: Todo) {
         viewModelScope.launch(Dispatchers.IO) {
-            todoListRepo.updateToDo(todo)
+            todoListRepo.updateTodo(todo)
         }
     }
     fun addProject(project: Project) {

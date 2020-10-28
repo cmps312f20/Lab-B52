@@ -22,6 +22,3 @@ class TodoListRepo(private val context: Context) {
     suspend fun updateTodo(todo: Todo) = todoDao.updateTodo(todo)
     suspend fun deleteTodo(todo: Todo) = todoDao.deleteTodo(todo)
 }
-
-
-}
