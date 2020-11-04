@@ -1,6 +1,7 @@
 package cmps312.lab.todoapplication.ui.todo.viewmodel
 
 import android.app.Application
+import android.util.Log
 import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
@@ -23,21 +24,23 @@ class ProjectViewModel(application: Application) : AndroidViewModel(application)
     lateinit var selectedTodo: Todo
     var selectedProject: Project? = null
 
-
+    init {
+        listenToProjectChanges()
+        listenToTodoChanges()
+    }
 
     fun getTodos(projectId: String) {
         _todos.value = listOf<Todo>() //clear the list
         viewModelScope.launch(Dispatchers.IO) {
-            withContext(Dispatchers.Main){
-//                _todos.value =
-//                    cmps312.lab.todoapplication.repository.TodoListRepo.getTodoListByProject(projectId)
+            withContext(Dispatchers.Main) {
+                _todos.value = TodoListRepo.getTodoListByProject(projectId)
             }
         }
     }
 
     fun addTodo(todo: Todo) {
         viewModelScope.launch(Dispatchers.IO) {
-//            TodoListRepo.addTodo(todo).await()
+            TodoListRepo.addTodo(todo)
         }
     }
 
@@ -62,6 +65,40 @@ class ProjectViewModel(application: Application) : AndroidViewModel(application)
     fun deleteProject(project: Project) {
         viewModelScope.launch(Dispatchers.IO) {
             TodoListRepo.deleteProject(project)
+        }
+    }
+    private fun listenToTodoChanges() {
+        TodoListRepo.todosDocumentRef.addSnapshotListener { snapshot, error ->
+            if (error != null) {
+                Log.d("TAG", "Failed to listen $snapshot")
+                return@addSnapshotListener
+            }
+            val todos = mutableListOf<Todo>()
+            snapshot?.forEach {
+                val todo = it.toObject(Todo::class.java)
+                todo.todoId = it.id
+                todos.add(todo)
+            }
+            _todos.value = todos
+        }
+    }
+
+    private fun listenToProjectChanges() {
+        TodoListRepo.projectDocumentRef.addSnapshotListener { snapshot, error ->
+            if (error != null) {
+                Log.d("TAG", "Failed to listen $snapshot")
+                return@addSnapshotListener
+            }
+
+            // _projects.value = snapshot?.toObjects(Project::class.java)
+
+            val projects = mutableListOf<Project>()
+            snapshot?.forEach {
+                val project = it.toObject(Project::class.java)
+                project.projectId = it.id
+                projects.add(project)
+            }
+            _projects.value = projects
         }
     }
 
