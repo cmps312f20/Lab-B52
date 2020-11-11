@@ -70,7 +70,8 @@ class ProjectViewModel(application: Application) : AndroidViewModel(application)
     fun addProject(project: Project, photoUri: Uri) {
         viewModelScope.launch(Dispatchers.IO) {
             project.imageUrl = TodoListRepo.uploadPhoto(photoUri)
-            project.userId = Firebase.auth.currentUser?.uid.toString()
+//            project.userId = Firebase.auth.currentUser?.uid.toString()
+            Log.d(TAG, project.imageUrl)
             TodoListRepo.addProject(project)
         }
     }

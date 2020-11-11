@@ -33,6 +33,7 @@ class ProjectAdapter(val showTodoList: (Project) -> Unit) :
             //todo
             if (project.imageUrl.length > 10) {
                 binding.projectImg.visibility = View.VISIBLE
+            //todo
                 Glide.with(binding.root.context).load(project.imageUrl).into(binding.projectImg)
             }
         }

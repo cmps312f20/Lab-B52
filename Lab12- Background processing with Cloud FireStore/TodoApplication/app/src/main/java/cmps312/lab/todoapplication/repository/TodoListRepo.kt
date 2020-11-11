@@ -80,13 +80,18 @@ object TodoListRepo {
     }
 
     //Todo  suspend fun uploadPhoto(photoUri: Uri): String
-    fun uploadPhoto(photoUri: Uri): String {
+    suspend fun uploadPhoto(photoUri: Uri): String {
+        var timestamp = SimpleDateFormat("yyyyMMdd_HHmmSS").format(Date())
+        val fileName = "IMAGE_" + timestamp + "_.png"
 
-        return ""
+        var storageRef = FirebaseStorage.getInstance()
+            .reference.child("images").child(fileName)
+
+        var task = storageRef.putFile(photoUri).await()
+        return storageRef.downloadUrl.await().toString()
     }
 
 }
-
 
 
 //Improvement use flow
