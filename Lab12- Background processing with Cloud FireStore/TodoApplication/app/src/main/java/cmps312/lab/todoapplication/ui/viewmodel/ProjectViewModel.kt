@@ -70,7 +70,7 @@ class ProjectViewModel(application: Application) : AndroidViewModel(application)
     fun addProject(project: Project, photoUri: Uri) {
         viewModelScope.launch(Dispatchers.IO) {
             project.imageUrl = TodoListRepo.uploadPhoto(photoUri)
-//            project.userId = Firebase.auth.currentUser?.uid.toString()
+            project.userId = Firebase.auth.currentUser?.uid.toString()
             Log.d(TAG, project.imageUrl)
             TodoListRepo.addProject(project)
         }
@@ -111,8 +111,8 @@ class ProjectViewModel(application: Application) : AndroidViewModel(application)
                     val project = it.toObject(Project::class.java)
                     project.id = it.id
 
-                    //todo wrap this with project.userId == Firebase.auth.currentUser!!.uid.toString()
-                    updatedProjectDocuments.add(project)
+                    if(project.userId == Firebase.auth.currentUser!!.uid.toString())
+                        updatedProjectDocuments.add(project)
                 }
 
                 _projects.value = updatedProjectDocuments

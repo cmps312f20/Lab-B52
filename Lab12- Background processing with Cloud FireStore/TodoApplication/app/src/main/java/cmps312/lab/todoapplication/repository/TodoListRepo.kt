@@ -61,15 +61,13 @@ object TodoListRepo {
         }.addOnFailureListener {
             Log.d(TAG, it.stackTraceToString())
         }
-
-//    suspend fun getTodo(id: String) =
-//        todoDocumentsRef.document(id).get().await().toObject(Todo::class.java)
-
+    
     suspend fun deleteTodo(todo: Todo) = todoDocumentsRef.document(todo.id).delete()
     suspend fun updateToDo(todo: Todo) = todoDocumentsRef.document(todo.id).set(todo).await()
 
     suspend fun getUserProject(userId: String): List<Project>? {
-        val querySnapShot = projectDocumentsRef.whereEqualTo("userId", userId).get().await()
+        val querySnapShot = projectDocumentsRef
+            .whereEqualTo("userId", userId).get().await()
         val projects = mutableListOf<Project>()
         querySnapShot.forEach {
             val project = it.toObject(Project::class.java)
