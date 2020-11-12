@@ -61,7 +61,7 @@ object TodoListRepo {
         }.addOnFailureListener {
             Log.d(TAG, it.stackTraceToString())
         }
-    
+
     suspend fun deleteTodo(todo: Todo) = todoDocumentsRef.document(todo.id).delete()
     suspend fun updateToDo(todo: Todo) = todoDocumentsRef.document(todo.id).set(todo).await()
 
