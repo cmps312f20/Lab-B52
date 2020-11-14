@@ -62,12 +62,14 @@ object TodoListRepo {
             Log.d(TAG, it.stackTraceToString())
         }
 
+//    suspend fun getTodo(id: String) =
+//        todoDocumentsRef.document(id).get().await().toObject(Todo::class.java)
+
     suspend fun deleteTodo(todo: Todo) = todoDocumentsRef.document(todo.id).delete()
     suspend fun updateToDo(todo: Todo) = todoDocumentsRef.document(todo.id).set(todo).await()
 
     suspend fun getUserProject(userId: String): List<Project>? {
-        val querySnapShot = projectDocumentsRef
-            .whereEqualTo("userId", userId).get().await()
+        val querySnapShot = projectDocumentsRef.whereEqualTo("userId", userId).get().await()
         val projects = mutableListOf<Project>()
         querySnapShot.forEach {
             val project = it.toObject(Project::class.java)
@@ -78,37 +80,9 @@ object TodoListRepo {
     }
 
     //Todo  suspend fun uploadPhoto(photoUri: Uri): String
-    suspend fun uploadPhoto(photoUri: Uri): String {
-        var timestamp = SimpleDateFormat("yyyyMMdd_HHmmSS").format(Date())
-        val fileName = "IMAGE_" + timestamp + "_.png"
+    fun uploadPhoto(photoUri: Uri): String {
 
-        var storageRef = FirebaseStorage.getInstance()
-            .reference.child("images").child(fileName)
-
-        var task = storageRef.putFile(photoUri).await()
-        return storageRef.downloadUrl.await().toString()
+        return ""
     }
 
 }
-
-
-//Improvement use flow
-/*
-suspend fun getProjects(): Flow<List<Project>> {
-        return callbackFlow {
-            val listenerRegistration = TodoListRepo.projectDocuments
-                .addSnapshotListener { querySnapshot: QuerySnapshot?, e: FirebaseFirestoreException? ->
-                    if (e != null) {
-                        cancel(message = "We could not get the projects ", cause = e)
-                        return@addSnapshotListener
-                    }
-
-                    val projects = querySnapshot!!.toObjects(Project::class.java)
-                    offer(projects)
-                }
-            awaitClose{
-                listenerRegistration.remove()
-            }
-        }
-    }
- */

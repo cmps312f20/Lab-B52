@@ -73,12 +73,8 @@ class ProjectListFragment : Fragment(R.layout.fragment_project_list) {
                 }.show()
         }
     }
-    //todo
-    private fun openGallery() {
-        var intent = Intent(Intent.ACTION_PICK)
-        intent.type = "image/*"
-        startActivityForResult(intent, GALLERY)
-    }
+    //todo gallery
+
 
     private fun onCreateDialog(savedInstanceState: Bundle?): Dialog {
         val myCustomDialog = activity?.let {
@@ -92,7 +88,7 @@ class ProjectListFragment : Fragment(R.layout.fragment_project_list) {
             // Pass null as the parent view because its going in the dialog layout
             val selectBtn : Button = view.findViewById<Button>(R.id.chooseImgBtn)
             selectBtn.setOnClickListener {
-                openGallery()
+//                openGallery()
             }
 
             builder.setView(view)
@@ -147,14 +143,6 @@ class ProjectListFragment : Fragment(R.layout.fragment_project_list) {
     //endregion
 
     //todo
-    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
-        super.onActivityResult(requestCode, resultCode, data)
-        if (requestCode == GALLERY) {
-            photoUri = data?.data!!
-            val projectImage =  dialogView?.findViewById<ImageView>(R.id.selectedProjectImg)
-            projectImage?.visibility = View.VISIBLE
-            projectImage?.setImageURI(photoUri)
-        }
-    }
+
 
 }
